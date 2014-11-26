@@ -77,13 +77,12 @@ void getToken(){
 		return;	
 	}
 
-	/* what's this? */
 	currToken.mStr[1] = '\0';
 	currToken.mType = *p;
 	return;
 }
 
-/*	recursion in find identifier */
+/*	recursion till find the identifier */
 void read_to_first_identifier(){
 	getToken();
 	while(currToken.mType != IDENTIFIER){
@@ -113,7 +112,7 @@ void deal_with_function_args(){
 		getToken();
 	}
 	getToken();
-	printf("function returning ");
+	printf("function, returning ");
 }
 
 void deal_with_pointers(){
@@ -137,7 +136,7 @@ void deal_with_declarator(){
 	while(top >= 0 ){
 		if(tokenStack[top].mType == '('){
 			pop;
-			getToken();	//Find the ')'          ????
+			getToken();	
 			deal_with_declarator();
 		}else{
 			printf("%s ",pop.mStr);
